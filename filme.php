@@ -3,6 +3,11 @@
 	include('./includes/generos.php');
 	$id = 1* $_GET['id'];
 	$f = $filmes[$id];
+
+	if ( !array_key_exists('id',$_GET) || $_GET['id'] >= count($filmes) ) {
+		echo('Filme inexistente!');
+		die();
+	}
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +33,9 @@
 				}
 			?>
 		</ul>
-		<form>
-			<input type="text" name="trecho"><button type="submit">Buscar</button>
+			<form method="GET" action='busca.php'>
+			<input type="text" name="trecho">
+			<button type="submit">Buscar</button>
 		</form>
 	</nav>
 	<main>
